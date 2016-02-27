@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 import org.junit.Test;
 
-public class SimpleStringTest {
+public class SelfStringTest {
 	private static final String COMPLEX_STRING = "complex\\string";
 
 	@Test
@@ -25,6 +25,6 @@ public class SimpleStringTest {
 	}
 	
 	private void assertStringIsMatchedToItself(String simpleString) {
-		assertThat(Pattern.compile(new SimpleString().convert(simpleString)).matcher(simpleString).matches()).isTrue();
+		assertThat(Pattern.compile(new SelfString().convert(simpleString)).matcher(simpleString).matches()).isTrue();
 	}
 }

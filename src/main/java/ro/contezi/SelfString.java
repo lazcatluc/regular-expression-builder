@@ -1,6 +1,6 @@
 package ro.contezi;
 
-public class SimpleString {
+public class SelfString {
 
 	public String convert(String string) {
 		return "\\Q"+string+"\\E";
