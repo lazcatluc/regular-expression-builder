@@ -10,11 +10,6 @@ public class SimpleStringTest {
 	private static final String COMPLEX_STRING = "complex\\string";
 
 	@Test
-	public void convertsSimpleStringToItselfQuoted() throws Exception {
-		assertThat(new SimpleString().convert("some string")).isEqualTo("\\Qsome string\\E");
-	}
-
-	@Test
 	public void simpleStringRegExpMatchesSimpleString() throws Exception {
 		assertStringIsMatchedToItself("simple string");
 	}
