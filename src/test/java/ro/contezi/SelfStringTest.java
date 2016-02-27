@@ -1,6 +1,7 @@
 package ro.contezi;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
+import static ro.contezi.PatternBuilder.*;
 
 import java.util.regex.Pattern;
 
@@ -25,6 +26,6 @@ public class SelfStringTest {
 	}
 	
 	private void assertStringIsMatchedToItself(String simpleString) {
-		assertThat(RegularExpressions.string(simpleString).buildPattern().matcher(simpleString).matches()).isTrue();
+		assertThat(string(simpleString).build().matcher(simpleString).matches()).isTrue();
 	}
 }

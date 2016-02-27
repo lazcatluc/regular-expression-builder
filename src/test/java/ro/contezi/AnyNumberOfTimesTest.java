@@ -1,8 +1,7 @@
 package ro.contezi;
 
 import static org.assertj.core.api.StrictAssertions.assertThat;
-import static ro.contezi.RegularExpressions.anyNumberOfTimes;
-import static ro.contezi.RegularExpressions.string;
+import static ro.contezi.PatternBuilder.*;
 
 import org.junit.Test;
 
@@ -26,10 +25,10 @@ public class AnyNumberOfTimesTest {
 	
 	@Test
 	public void doesntMatchDifferentInput() throws Exception {
-		assertThat(anyNumberOfTimes(string(FOO_BAR_BAZ)).buildPattern().matcher("foo\\bar-baz").matches()).isFalse();
+		assertThat(string(FOO_BAR_BAZ).anyNumberOfTimes().build().matcher("foo\\bar-baz").matches()).isFalse();
 	}
 	
 	private void assertMatchesInput(final String input) {
-		assertThat(anyNumberOfTimes(string(FOO_BAR_BAZ)).buildPattern().matcher(input).matches()).isTrue();
+		assertThat(string(FOO_BAR_BAZ).anyNumberOfTimes().build().matcher(input).matches()).isTrue();
 	}
 }
