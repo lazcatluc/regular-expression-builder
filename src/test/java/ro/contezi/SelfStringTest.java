@@ -25,6 +25,6 @@ public class SelfStringTest {
 	}
 	
 	private void assertStringIsMatchedToItself(String simpleString) {
-		assertThat(Pattern.compile(new SelfString().convert(simpleString)).matcher(simpleString).matches()).isTrue();
+		assertThat(RegularExpressions.string(simpleString).buildPattern().matcher(simpleString).matches()).isTrue();
 	}
 }
