@@ -58,12 +58,17 @@ public class PatternBuilder {
 		return this;
 	}
 	
+	public PatternBuilder then(PatternGroup helloGroup) {
+		pattern.append("\\k<").append(helloGroup.getName()).append('>');		
+		return this;
+	}
+	
 	public Pattern build() {
 		return Pattern.compile(pattern.toString());
 	}
 
 	private StringBuilder paranthesize() {
-		return pattern.insert(0, '(').append(')');		
+		return pattern.insert(0, "(?:").append(')');		
 	}
 
 	public PatternBuilder or(PatternBuilder anotherPattern) {
@@ -75,4 +80,11 @@ public class PatternBuilder {
 		pattern.append(c).append(']');
 		return this;
 	}
+
+	public PatternGroup group() {
+		PatternGroup group = new PatternGroup();
+		pattern.insert(0, "(?<"+group.getName()+'>').append(')');	
+		return group;
+	}
+
 }
