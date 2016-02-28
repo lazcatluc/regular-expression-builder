@@ -51,7 +51,7 @@ public class PatternBuilder {
 		return new PatternBuilder(new StringBuilder(pattern).append(anotherPattern.pattern));
 	}
 
-	public PatternBuilder then(String groupName) {
+	public PatternBuilder thenGroup(String groupName) {
 		return new PatternBuilder(new StringBuilder(pattern).append("\\k<").append(groupName).append('>'));
 	}
 

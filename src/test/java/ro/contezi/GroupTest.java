@@ -13,7 +13,7 @@ public class GroupTest {
 	@Before
 	public void setUp() {
 		pattern = string("he").then(string("l").atLeastOnce()).then(string("o")).group("hello").then(string("world"))
-				.then("hello");
+				.thenGroup("hello");
 	}
 
 	@Test
@@ -24,7 +24,7 @@ public class GroupTest {
 	@Test
 	public void matchesGroupedSearchAfter() throws Exception {		
 		assertThat(string("f").then(string("o").atLeastOnce()).group("foo").then(string("bar"))
-				.then("foo").then(pattern).build().matcher("foobarfoohelloworldhello").matches()).isTrue();
+				.thenGroup("foo").then(pattern).build().matcher("foobarfoohelloworldhello").matches()).isTrue();
 	}
 
 	@Test
