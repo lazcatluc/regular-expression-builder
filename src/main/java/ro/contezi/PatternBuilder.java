@@ -55,4 +55,9 @@ public class PatternBuilder {
 	private StringBuilder paranthesize() {
 		return pattern.insert(0, '(').append(')');		
 	}
+
+	public PatternBuilder or(PatternBuilder anotherPattern) {
+		paranthesize().append('|').append(anotherPattern.paranthesize());
+		return this;
+	}
 }
