@@ -17,6 +17,10 @@ public class PatternBuilder {
 	public static PatternBuilder string(String string) {
 		return new PatternBuilder(new StringBuilder("\\Q").append(string).append("\\E"));
 	}
+	
+	public static PatternBuilder from(char start) {
+		return new PatternBuilder(new StringBuilder("[").append(start).append('-'));
+	}
 
 	public PatternBuilder anyNumberOfTimes() {
 		paranthesize().append('*');
@@ -58,6 +62,11 @@ public class PatternBuilder {
 
 	public PatternBuilder or(PatternBuilder anotherPattern) {
 		paranthesize().append('|').append(anotherPattern.paranthesize());
+		return this;
+	}
+
+	public PatternBuilder to(char c) {
+		pattern.append(c).append(']');
 		return this;
 	}
 }
