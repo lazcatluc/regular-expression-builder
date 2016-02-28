@@ -32,7 +32,7 @@ public class OrTest {
 	}
 	
 	@Test
-	public void aThroughzOrAThroughZAtLeastDoesntMatchTwoWords() throws Exception {
+	public void aThroughzOrAThroughZAtLeastOnceDoesntMatchTwoWords() throws Exception {
 		assertThat(from('a').to('z').or(from('A').to('Z')).atLeastOnce().build().matcher("Hello World").matches()).isFalse();
 	}
 }

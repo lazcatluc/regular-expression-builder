@@ -21,6 +21,12 @@ public class PatternBuilder {
 	public static PatternBuilder from(char start) {
 		return new PatternBuilder(new StringBuilder("[").append(start).append('-'));
 	}
+	
+	public static PatternBuilder maybe(String string) {
+		final PatternBuilder pattern = string(string);
+		pattern.paranthesize().append('?');
+		return pattern;
+	}
 
 	public PatternBuilder anyNumberOfTimes() {
 		paranthesize().append('*');
