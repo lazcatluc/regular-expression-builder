@@ -51,8 +51,8 @@ public class PatternBuilder {
 		return new PatternBuilder(new StringBuilder(pattern).append(anotherPattern.pattern));
 	}
 
-	public PatternBuilder then(PatternGroup helloGroup) {
-		return new PatternBuilder(new StringBuilder(pattern).append("\\k<").append(helloGroup.getName()).append('>'));
+	public PatternBuilder then(String groupName) {
+		return new PatternBuilder(new StringBuilder(pattern).append("\\k<").append(groupName).append('>'));
 	}
 
 	public Pattern build() {
@@ -71,8 +71,8 @@ public class PatternBuilder {
 		return new PatternBuilder(new StringBuilder(pattern).append(c).append(']'));
 	}
 
-	public PatternBuilder group(PatternGroup group) {
-		return new PatternBuilder(new StringBuilder("(?<").append(group.getName()).append('>').append(pattern).append(')'));
+	public PatternBuilder group(String groupName) {
+		return new PatternBuilder(new StringBuilder("(?<").append(groupName).append('>').append(pattern).append(')'));
 	}
 
 }

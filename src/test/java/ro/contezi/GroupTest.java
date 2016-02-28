@@ -8,14 +8,12 @@ import org.junit.Test;
 
 public class GroupTest {
 
-	private PatternBuilder pattern;
-	private PatternGroup helloGroup;
+	private PatternBuilder pattern;	
 
 	@Before
 	public void setUp() {
-		helloGroup = new PatternGroup();
-		pattern = string("he").then(string("l").atLeastOnce()).then(string("o")).group(helloGroup).then(string("world"))
-				.then(helloGroup);
+		pattern = string("he").then(string("l").atLeastOnce()).then(string("o")).group("hello").then(string("world"))
+				.then("hello");
 	}
 
 	@Test
@@ -24,10 +22,9 @@ public class GroupTest {
 	}
 
 	@Test
-	public void matchesGroupedSearchAfter() throws Exception {
-		PatternGroup fooGroup = new PatternGroup();
-		assertThat(string("f").then(string("o").atLeastOnce()).group(fooGroup).then(string("bar"))
-				.then(fooGroup).then(pattern).build().matcher("foobarfoohelloworldhello").matches()).isTrue();
+	public void matchesGroupedSearchAfter() throws Exception {		
+		assertThat(string("f").then(string("o").atLeastOnce()).group("foo").then(string("bar"))
+				.then("foo").then(pattern).build().matcher("foobarfoohelloworldhello").matches()).isTrue();
 	}
 
 	@Test
