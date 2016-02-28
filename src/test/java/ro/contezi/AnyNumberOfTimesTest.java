@@ -25,10 +25,10 @@ public class AnyNumberOfTimesTest {
 	
 	@Test
 	public void doesntMatchDifferentInput() throws Exception {
-		assertThat(string(FOO_BAR_BAZ).anyNumberOfTimes().build().matcher("foo\\bar-baz").matches()).isFalse();
+		assertThat(string(FOO_BAR_BAZ).anyNumberOfTimes().matches("foo\\bar-baz")).isFalse();
 	}
 	
 	private void assertMatchesInput(final String input) {
-		assertThat(string(FOO_BAR_BAZ).anyNumberOfTimes().build().matcher(input).matches()).isTrue();
+		assertThat(string(FOO_BAR_BAZ).anyNumberOfTimes().matches(input)).isTrue();
 	}
 }

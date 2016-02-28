@@ -1,5 +1,6 @@
 package ro.contezi;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PatternBuilder {
@@ -56,7 +57,15 @@ public class PatternBuilder {
 	}
 
 	public Pattern build() {
-		return Pattern.compile(pattern.toString());
+		return Pattern.compile(pattern);
+	}
+	
+	public Matcher matcher(CharSequence input) {
+		return build().matcher(input);
+	}
+	
+	public boolean matches(CharSequence input) {
+		return matcher(input).matches();
 	}
 
 	private StringBuilder paranthesize() {

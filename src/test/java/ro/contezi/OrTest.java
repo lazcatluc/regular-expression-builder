@@ -8,31 +8,31 @@ import org.junit.Test;
 public class OrTest {
 	@Test
 	public void aOrbMatchesa() throws Exception {
-		assertThat(string("a").or(string("b")).build().matcher("a").matches()).isTrue();
+		assertThat(string("a").or(string("b")).matches("a")).isTrue();
 	}
 	
 	@Test
 	public void aOrbMatchesb() throws Exception {
-		assertThat(string("a").or(string("b")).build().matcher("b").matches()).isTrue();
+		assertThat(string("a").or(string("b")).matches("b")).isTrue();
 	}
 
 	@Test
 	public void aOrbDoesntMatchesc() throws Exception {
-		assertThat(string("a").or(string("b")).build().matcher("c").matches()).isFalse();
+		assertThat(string("a").or(string("b")).matches("c")).isFalse();
 	}
 	
 	@Test
 	public void aThroughzMatchesb() throws Exception {
-		assertThat(from('a').to('z').build().matcher("b").matches()).isTrue();
+		assertThat(from('a').to('z').matches("b")).isTrue();
 	}
 	
 	@Test
 	public void aThroughzOrAThroughZAtLeastOnceMatchesWord() throws Exception {
-		assertThat(from('a').to('z').or(from('A').to('Z')).atLeastOnce().build().matcher("Hello").matches()).isTrue();
+		assertThat(from('a').to('z').or(from('A').to('Z')).atLeastOnce().matches("Hello")).isTrue();
 	}
 	
 	@Test
 	public void aThroughzOrAThroughZAtLeastOnceDoesntMatchTwoWords() throws Exception {
-		assertThat(from('a').to('z').or(from('A').to('Z')).atLeastOnce().build().matcher("Hello World").matches()).isFalse();
+		assertThat(from('a').to('z').or(from('A').to('Z')).atLeastOnce().matches("Hello World")).isFalse();
 	}
 }

@@ -8,6 +8,6 @@ import org.junit.Test;
 public class AnyCharacterTest {
 	@Test
 	public void matchesX() throws Exception {
-		assertThat(anyCharacter().build().matcher("X").matches()).isTrue();
+		assertThat(anyCharacter().matches("X")).isTrue();
 	}
 }

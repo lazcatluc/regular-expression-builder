@@ -24,11 +24,11 @@ public class GroupTest {
 	@Test
 	public void matchesGroupedSearchAfter() throws Exception {		
 		assertThat(string("f").then(string("o").atLeastOnce()).group("foo").then(string("bar"))
-				.thenGroup("foo").then(pattern).build().matcher("foobarfoohelloworldhello").matches()).isTrue();
+				.thenGroup("foo").then(pattern).matches("foobarfoohelloworldhello")).isTrue();
 	}
 
 	@Test
 	public void doesntMatchDifferentNumberOfLinHello() throws Exception {
-		assertThat(pattern.build().matcher("helloworldhellllo").matches()).isFalse();
+		assertThat(pattern.matches("helloworldhellllo")).isFalse();
 	}
 }

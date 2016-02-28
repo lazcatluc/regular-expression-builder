@@ -8,6 +8,6 @@ import org.junit.Test;
 public class ChainingTest {
 	@Test
 	public void aThenbMatchesab() throws Exception {
-		assertThat(string("a").then(string("b")).build().matcher("ab").matches()).isTrue();
+		assertThat(string("a").then(string("b")).matches("ab")).isTrue();
 	}
 }

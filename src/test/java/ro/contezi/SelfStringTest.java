@@ -25,7 +25,7 @@ public class SelfStringTest {
 		assertThat(Pattern.compile(COMPLEX_STRING).matcher(COMPLEX_STRING).matches()).isFalse();
 	}
 	
-	private void assertStringIsMatchedToItself(String simpleString) {
-		assertThat(string(simpleString).build().matcher(simpleString).matches()).isTrue();
+	private void assertStringIsMatchedToItself(String string) {
+		assertThat(string(string).matches(string)).isTrue();
 	}
 }
