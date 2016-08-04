@@ -10,6 +10,10 @@ public class PatternBuilder {
 	private PatternBuilder(StringBuilder patternBuilder) {
 		this.pattern = patternBuilder.toString();
 	}
+	
+	public static PatternBuilder startsWith(String string) {
+		return new PatternBuilder(new StringBuilder("^").append(string(string)));
+	}
 
 	public static PatternBuilder anyCharacter() {
 		return new PatternBuilder(new StringBuilder("."));
@@ -84,4 +88,15 @@ public class PatternBuilder {
 		return new PatternBuilder(new StringBuilder("(?<").append(groupName).append('>').append(pattern).append(')'));
 	}
 
+	public PatternBuilder thenTerminates() {
+		return new PatternBuilder(new StringBuilder(pattern).append("$"));
+	}
+	
+	@Override
+	public String toString() {
+		return pattern;
+	}
+
+
+	
 }
